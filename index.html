@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1020">
+<meta name="description" content="FreeToolHub offers free online word counting, percentage calculation and text case conversion tools.">
+<title>FreeToolHub - Free Online Tools</title>
+
+<style>
+:root {
+  --bg: #0b1020;
+  --panel: #131b2e;
+  --panel2: #19243a;
+  --text: #f1f5f9;
+  --muted: #a1acc0;
+  --accent: #8b5cf6;
+  --border: #293650;
+  --green: #34d399;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+header {
+  padding: 17px 5%;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.logo { font-size: 23px; font-weight: 800; }
+.logo span { color: #a78bfa; }
+nav { display: flex; flex-wrap: wrap; gap: 15px; }
+nav a { color: var(--muted); text-decoration: none; font-size: 14px; }
+nav a:hover { color: white; }
+.hero {
+  text-align: center;
+  padding: 52px 18px 36px;
+  background: radial-gradient(ellipse at top, #20204b 0%, var(--bg) 72%);
+}
+.tag {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 30px;
+  border: 1px solid #51418a;
+  color: #c4b5fd;
+  font-size: 12px;
+}
+h1 { font-size: clamp(32px, 7vw, 49px); line-height: 1.15; margin: 18px 0 12px; }
+.hero p { max-width: 540px; margin: auto; color: var(--muted); }
+main { max-width: 1050px; margin: auto; padding: 24px 16px 55px; }
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px;
+  min-width: 0;
+}
+.card h2 { margin: 0 0 5px; font-size: 21px; }
+.desc { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+.icon { font-size: 25px; margin-bottom: 5px; }
+label { display: block; font-size: 13px; color: #cbd5e1; margin: 13px 0 6px; }
+input, textarea, select {
+  display: block;
+  width: 100%;
+  background: #0c1425;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 15px;
+  outline: none;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent);
+}
+textarea { resize: vertical; min-height: 125px; }
+button {
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 15px;
+  font-size: 14px;
+  font-weight: 700;
+}
+button:hover { filter: brightness(1.12); }
+button:focus-visible, a:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.secondary { background: var(--panel2); border: 1px solid var(--border); }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 15px;
+}
+.stat {
+  background: var(--panel2);
+  border-radius: 10px;
+  padding: 12px;
+}
+.stat strong { display: block; color: var(--green); font-size: 22px; }
+.stat span { color: var(--muted); font-size: 12px; }
+.result {
+  background: #0c1425;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 15px;
+  overflow-wrap: anywhere;
+}
+.result strong { color: var(--green); font-size: 24px; }
+.full { grid-column: 1 / -1; }
+footer {
+  text-align: center;
+  padding: 25px 16px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+}
+@media (max-width: 620px) {
+  header { padding: 15px 18px; }
+  .tool-grid { grid-template-columns: 1fr; }
+  .hero { padding-top: 38px; }
+  .card { padding: 18px; }
+  .full { grid-column: auto; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo">FreeTool<span>Hub</span></div>
+  <nav>
+    <a href="#word">Word Counter</a>
+    <a href="#percent">Percentage</a>
+    <a href="#case">Text Converter</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <span class="tag">100% FREE TO USE</span>
+  <h1>Simple Tools.<br>Smarter Work.</h1>
+  <p>Useful online tools for students, creators and everyone.
+     No account needed. Start using tools instantly.</p>
+</section>
+
+<main>
+<div class="tool-grid">
+
+  <!-- WORD COUNTER -->
+  <section class="card" id="word">
+    <div class="icon">📝</div>
+    <h2>Word Counter</h2>
+    <p class="desc">Count words, characters, sentences and paragraphs.</p>
+
+    <label for="wordText">Enter your text</label>
+    <textarea id="wordText" placeholder="Type or paste your text here..."></textarea>
+
+    <div class="stats">
+      <div class="stat"><strong id="words">0</strong><span>Words</span></div>
+      <div class="stat"><strong id="chars">0</strong><span>Characters</span></div>
+      <div class="stat"><strong id="sentences">0</strong><span>Sentences</span></div>
+      <div class="stat"><strong id="paragraphs">0</strong><span>Paragraphs</span></div>
+    </div>
+    <div class="btn-row">
+      <button class="secondary" onclick="clearWords()">Clear Text</button>
+      <button onclick="copyText('wordText')">Copy Text</button>
+    </div>
+  </section>
+
+  <!-- PERCENTAGE CALCULATOR -->
+  <section class="card" id="percent">
+    <div class="icon">🧮</div>
+    <h2>Percentage Calculator</h2>
+    <p class="desc">Find a percentage of any number.</p>
+
+    <label for="pct">Percentage (%)</label>
+    <input id="pct" type="number" step="any" placeholder="e.g. 25">
+
+    <label for="amount">Number / Amount</label>
+    <input id="amount" type="number" step="any" placeholder="e.g. 800">
+
+    <div class="btn-row">
+      <button onclick="calculatePercentage()">Calculate</button>
+      <button class="secondary" onclick="clearPercentage()">Reset</button>
+    </div>
+
+    <div class="result" aria-live="polite">
+      <div class="desc">Your result</div>
+      <strong id="pctResult">0</strong>
+      <div id="pctExplanation" class="desc" style="margin:6px 0 0">
+        Enter your numbers above.
+      </div>
+    </div>
+
+    <p class="desc" style="margin-top:12px">
+      Formula: (Percentage ÷ 100) × Number
+    </p>
+  </section>
+
+  <!-- TEXT CASE CONVERTER -->
+  <section class="card full" id="case">
+    <div class="icon">🔠</div>
+    <h2>Text Case Converter</h2>
+    <p class="desc">Change your text to uppercase, lowercase or other formats.</p>
+
+    <label for="caseText">Enter your text</label>
+    <textarea id="caseText" placeholder="Write something to convert..."></textarea>
+
+    <div class="btn-row">
+      <button onclick="convertCase('upper')">UPPERCASE</button>
+      <button onclick="convertCase('lower')">lowercase</button>
+      <button onclick="convertCase('title')">Title Case</button>
+      <button onclick="convertCase('sentence')">Sentence case</button>
+      <button class="secondary" onclick="clearCase()">Clear</button>
+    </div>
+
+    <label for="caseOutput">Converted text</label>
+    <textarea id="caseOutput" placeholder="Your converted text appears here..."></textarea>
+
+    <div class="btn-row">
+      <button onclick="copyText('caseOutput')">Copy Result</button>
+    </div>
+    <p id="copyStatus" class="desc" aria-live="polite" style="margin-top:10px"></p>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="logo">FreeTool<span>Hub</span></div>
+  <p>Free online tools for everyday tasks.</p>
+  <p>© <span id="year"></span> FreeToolHub</p>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function updateWordCount() {
+  const text = $("wordText").value;
+  const trimmed = text.trim();
+
+  const words = trimmed
+    ? trimmed.split(/\s+/u).filter(Boolean).length
+    : 0;
+
+  const sentences = trimmed
+    ? (trimmed.match(/[.!?]+(?=\s|$)|[^.!?]+$/gu) || [])
+        .filter(s => s.trim()).length
+    : 0;
+
+  const paragraphs = trimmed
+    ? text.split(/\n\s*\n/u).filter(p => p.trim()).length
+    : 0;
+
+  $("words").textContent = words;
+  $("chars").textContent = text.length;
+  $("sentences").textContent = sentences;
+  $("paragraphs").textContent = paragraphs;
+}
+
+$("wordText").addEventListener("input", updateWordCount);
+
+function clearWords() {
+  $("wordText").value = "";
+  updateWordCount();
+}
+
+function calculatePercentage() {
+  const p = $("pct").value.trim();
+  const n = $("amount").value.trim();
+
+  if (p === "" || n === "" ||
+      !Number.isFinite(Number(p)) ||
+      !Number.isFinite(Number(n))) {
+    $("pctResult").textContent = "Invalid input";
+    $("pctExplanation").textContent = "Please enter both valid numbers.";
+    return;
+  }
+
+  const percentage = Number(p);
+  const amount = Number(n);
+  const result = percentage / 100 * amount;
+
+  if (!Number.isFinite(result)) {
+    $("pctResult").textContent = "Number too large";
+    $("pctExplanation").textContent = "Please use smaller numbers.";
+    return;
+  }
+
+  $("pctResult").textContent = Number(result.toPrecision(10)).toLocaleString();
+  $("pctExplanation").textContent =
+    percentage + "% of " + amount.toLocaleString() + " = " +
+    Number(result.toPrecision(10)).toLocaleString();
+}
+
+function clearPercentage() {
+  $("pct").value = "";
+  $("amount").value = "";
+  $("pctResult").textContent = "0";
+  $("pctExplanation").textContent = "Enter your numbers above.";
+}
+
+function convertCase(type) {
+  const text = $("caseText").value;
+  let output = text;
+
+  if (type === "upper") {
+    output = text.toUpperCase();
+  } else if (type === "lower") {
+    output = text.toLowerCase();
+  } else if (type === "title") {
+    output = text.toLowerCase().replace(
+      /(^|[\s\-])([a-z])/g,
+      (match, before, letter) => before + letter.toUpperCase()
+    );
+  } else if (type === "sentence") {
+    let start = true;
+    output = text.toLowerCase().replace(/[.!?]+|\b[a-z]/g, match => {
+      if (/^[.!?]+$/.test(match)) {
+        start = true;
+        return match;
+      }
+      if (start && /[a-z]/i.test(match)) {
+        start = false;
+        return match.toUpperCase();
+      }
+      return match;
+    });
+  }
+
+  $("caseOutput").value = output;
+  $("copyStatus").textContent = "";
+}
+
+function clearCase() {
+  $("caseText").value = "";
+  $("caseOutput").value = "";
+  $("copyStatus").textContent = "";
+}
+
+async function copyText(id) {
+  const value = $(id).value;
+  if (!value) {
+    $("copyStatus").textContent = "There is no text to copy.";
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(value);
+    $("copyStatus").textContent = "Text copied successfully!";
+  } catch (error) {
+    $(id).focus();
+    $(id).select();
+    $("copyStatus").textContent =
+      "Text selected. If copy did not work, tap Copy in your browser menu.";
+  }
+}
+
+$("year").textContent = new Date().getFullYear();
+updateWordCount();
+</script>
+</body>
+</html>
